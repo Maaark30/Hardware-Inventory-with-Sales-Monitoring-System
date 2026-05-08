@@ -1,0 +1,383 @@
+:root {
+	/* Blue color from the image */
+	--primary-color: #1458ec; 
+	--secondary-color: #eeeeee;
+	--hover-color: rgba(255,255,255,0.15);
+}
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+}
+
+/* Sidebar Container */
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 100vh;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+	padding-top: 10px;
+	box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+	transition: left 0.3s ease-in-out;
+	overflow-y: auto;
+    scrollbar-width: none; /* For none Firefox */
+}
+
+/* Sidebar Logo/Title Area */
+.sidebar-logo {
+	text-align: center;
+	/* Adjust padding to fit logo better, 10px is too much for vertical spacing shown in image */
+	padding: 20px 10px 10px 10px; 
+}
+
+/* Horizontal line below the logo/title */
+.sidebar hr {
+    margin: 10px 15px 15px 15px;
+}
+
+.sidebar-logo img {
+    /* Assuming a placeholder/dummy image based on original code, adjust size as needed */
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+}
+
+.sidebar-logo img:hover {
+	transform: scale(1.1) rotate(5deg);
+}
+
+/* Sidebar Section Titles (MAIN, MANAGEMENT, etc.) */
+.sidebar-title {
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.6);
+	padding: 10px 15px 5px 15px;
+	margin-top: 15px;
+	letter-spacing: 1px;
+}
+
+/* Navigation Links */
+.sidebar .nav-link {
+	color: var(--secondary-color);
+	padding: 10px 15px;
+	border-radius: 8px;
+	margin: 3px 10px; /* Added horizontal margin to align with image */
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: all 0.25s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+	background-color: var(--hover-color);
+	transform: translateX(5px);
+	box-shadow: inset 3px 0px 0px rgba(255,255,255,0.7);
+}
+
+/* Active Link Style (Dashboard in the image) */
+.sidebar .nav-link.active {
+	background-color: #0f1214; /* Pure black background shown in the image */
+	color: #ffffff;
+	font-weight: bold;
+	box-shadow: inset 3px 0px 0px #ffcc00; /* Yellow border shown in the image */
+}
+
+/* Logout Link Style */
+.sidebar .nav-link.text-danger {
+    color: #dc3545 !important;
+}
+
+.sidebar .nav-link.text-danger:hover {
+    background-color: rgba(220, 53, 69, 0.3) !important;
+    color: #ffffff !important; 
+}
+
+/* Icon Styles */
+.sidebar .nav-link i {
+	font-size: 1.2rem;
+	transition: transform 0.25s ease;
+}
+
+.sidebar .nav-link:hover i {
+	transform: scale(1.15);
+}
+
+/* Main Content Area */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+}
+
+/* Layout adjustments and responsive behavior for content and container */
+@media (min-width: 992px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centers .profile-card horizontally */
+    }
+
+    .content > .container-fluid {
+        width: 100%;
+        max-width: 1100px; /* constrains content area so children can be centered */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0; /* remove default container padding interfering with centering */
+        padding-right: 0;
+        box-sizing: border-box;
+    }
+
+    /* ensure the fullwidth card fits inside the constrained content area */
+    .profile-card.fullwidth {
+        width: calc(100% - 32px); /* small gutters to avoid touching edges */
+        max-width: calc(100% - 32px);
+    }
+}
+
+/* On smaller screens the content should stretch to full width */
+@media (max-width: 992px) {
+    .content {
+        display: block;
+        align-items: stretch;
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .content > .container-fluid {
+        display: block;
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* small-screen profile-card padding is handled in the main responsive block below */
+}
+
+/* Ensure page-level headings inside the container stay left-aligned
+   even when the container is centered for layout purposes. This keeps
+   titles like "My Profile Settings" flush with the content start. */
+.content > .container-fluid > h1,
+.content > .container-fluid > h2,
+.content > .container-fluid > h3,
+.content > .container-fluid > h4 {
+    width: 100%;
+    text-align: left;
+    align-self: flex-start; /* when the parent is a flex container */
+    padding-left: 0; /* ensure it lines up with the content gutter */
+}
+
+/* Also ensure headings placed directly under .content are left-aligned */
+.content > h1,
+.content > h2,
+.content > h3,
+.content > h4 {
+    text-align: left;
+    width: 100%;
+}
+
+
+
+/* ===== Buttons ===== */
+.btn-outline-primary {
+    border: 2px solid #1458ec;
+    color: #1458ec;
+}
+.btn-outline-primary:hover {
+    background: #1458ec;
+    color: #fff;
+}
+.btn-primary {
+    background: #1458ec;
+    border: none;
+}
+.btn-primary:hover {
+    background: #0f47c9;
+}
+
+/* ===== Table Styling ===== */
+.table thead {
+    background-color: #1458ec !important;
+    color: #fff !important;
+    border-radius: 10px 10px 0 0;
+}
+.table tbody tr:hover {
+    background-color: #f2f6ff;
+    transition: background 0.2s ease;
+}
+
+
+/* =================== FORM STYLES =================== */
+.form-label {
+    font-weight: 600;
+    color: #444;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 12px;
+    transition: all 0.2s;
+}
+
+.form-control:focus {
+    border-color: #1458ec;
+    box-shadow: 0 0 0 0.25rem rgba(20, 88, 236, 0.25);
+}
+
+.form-control[readonly] {
+    background-color: #f8f9fa;
+    color: #555;
+}
+
+/* =================== BUTTONS =================== */
+.btn {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-edit {
+    background-color: #198754;
+    color: white;
+}
+.btn-edit:hover {
+    background-color: #157347;
+}
+
+.btn-primary-pin {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+.btn-primary-pin:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-warning {
+    color: white;
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+/* =================== TABLE-LIKE FORM LOOK =================== */
+#profileForm .row {
+    margin-bottom: 20px;
+}
+
+#profileForm input {
+    font-size: 1rem;
+}
+
+#profileForm .form-control {
+    height: 50px;
+}
+
+/* =================== MODALS =================== */
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal-verify-title {
+    color: #1458ec;
+    font-weight: 700;
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 992px) {
+    .profile-card {
+        padding: 30px;
+    }
+    .content {
+        padding: 20px;
+    }
+}
+
+/* Remove the left offset on smaller screens (sidebar collapses) so content becomes full width */
+@media (max-width: 992px) {
+    .content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Center the profile card/form and give it a card-like appearance */
+.profile-card {
+    width: 100%;
+    max-width: 1100px; /* wider default so the form appears more spacious */
+    margin: 24px auto; /* center horizontally with vertical spacing */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-color: #ffffff; /* white card background */
+    padding: 28px 32px; /* comfortable inner padding */
+    border-radius: 12px; /* rounded corners */
+    box-shadow: 0 6px 18px rgba(8,35,73,0.08);
+    align-self: center !important; /* when parent is a flex container */
+}
+
+/* Optional wide modifier for very wide screens */
+.profile-card.wide {
+    max-width: 1400px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+/* Slightly larger wide option for medium-large screens */
+@media (min-width: 1200px) {
+    .profile-card.wide {
+        max-width: 1600px;
+    }
+}
+
+/* Full-width variant: make the card stretch to the content area (like dashboard) */
+.profile-card.fullwidth {
+    max-width: none;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    border-radius: 10px;
+    padding: 24px 28px; /* keep inner padding while using full width */
+    box-shadow: none; /* dashboard-like panels are often flat */
+}
+
+@media (min-width: 992px) {
+    /* ensure the fullwidth card fits inside the constrained content area */
+    .profile-card.fullwidth {
+        width: calc(100% - 32px); /* small gutters to avoid touching edges */
+        max-width: calc(100% - 32px);
+    }
+}
+
+
+
+/* Ensure the action buttons stay centered on narrow screens */
+.profile-card .d-flex.justify-content-center {
+    flex-wrap: wrap;
+}
+.profile-card .d-flex.justify-content-center .btn {
+    min-width: 160px;
+}

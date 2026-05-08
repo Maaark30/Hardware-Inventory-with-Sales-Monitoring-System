@@ -1,0 +1,82 @@
+<?php
+require 'project.php';
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $product_id = intval($_POST['product_id'] ?? 0);
+    $quantity   = intval($_POST['quantity'] ?? 0);
+    $reason     = trim($_POST['reason'] ?? '');
+    $stocked_by = $_SESSION['username'] ?? 'Admin';
+
+    // ✅ Validate inputs
+    if ($product_id <= 0 || $quantity <= 0) {
+        $_SESSION['error'] = "Invalid product or quantity.";
+        header("Location: products.php");
+        exit();
+    }
+
+    // ✅ Check product
+    $stmt = $conn->prepare("SELECT stock, supplier_price FROM products WHERE product_id = ?");
+    if (!$stmt) {
+        $_SESSION['error'] = "DB prepare failed: " . $conn->error;
+        header("Location: products.php");
+        exit();
+    }
+
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $product = $result->fetch_assoc();
+    $stmt->close();
+
+    if (!$product) {
+        $_SESSION['error'] = "Product not found.";
+        header("Location: products.php");
+        exit();
+    }
+
+    $current_stock = (int)$product['stock'];
+    $supplier_price = (float)$product['supplier_price'];
+    $total_cost = $supplier_price * $quantity;
+
+    // ✅ Check stock availability
+    if ($quantity > $current_stock) {
+        $_SESSION['error'] = "Not enough stock available. Current stock: {$current_stock}.";
+        header("Location: products.php");
+        exit();
+    }
+
+    // ✅ Insert record into stock_out
+    $insert = $conn->prepare("
+        INSERT INTO stock_out (product_id, quantity, supplier_price, total_cost, reason, stocked_by, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, NOW())
+    ");
+
+    if (!$insert) {
+        $_SESSION['error'] = "Prepare failed: " . $conn->error;
+        header("Location: products.php");
+        exit();
+    }
+
+    $insert->bind_param("iiddss", $product_id, $quantity, $supplier_price, $total_cost, $reason, $stocked_by);
+
+    if (!$insert->execute()) {
+        $_SESSION['error'] = "Insert failed: " . $insert->error;
+        $insert->close();
+        header("Location: products.php");
+        exit();
+    }
+    $insert->close();
+
+    // ✅ Update product stock
+    $new_stock = $current_stock - $quantity;
+    $update = $conn->prepare("UPDATE products SET stock = ? WHERE product_id = ?");
+    $update->bind_param("ii", $new_stock, $product_id);
+    $update->execute();
+    $update->close();
+
+    $_SESSION['success'] = "Stock out successful! Deducted {$quantity} from stock.";
+    header("Location: products.php");
+    exit();
+}
+?>

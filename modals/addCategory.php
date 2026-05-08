@@ -1,0 +1,39 @@
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Header with black background -->
+      <div class="modal-header" style="background-color: #000000; color: white;">
+        <h5 class="modal-title" id="addCategoryModalLabel">
+          <i class="fa fa-plus-circle"></i> Add Category
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
+      </div>
+
+      <form id="saveCategories">
+        <div class="modal-body">
+          <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+          <div class="mb-3">
+            <label class="fw-bold mb-2" for="category_name">Category Name</label>
+            <input type="text" id="category_name" name="category_name" class="form-control" placeholder="Enter category name" style="border-color: #000000;">
+            <div class="error-message text-danger"></div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <!-- Close button with black border and text -->
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: white; color: #000000; border-color: #000000;">
+            <i class="fa fa-times"></i> Close
+          </button>
+
+          <!-- Save button with black background -->
+          <button type="submit" class="btn" style="background-color: #000000; color: white;">
+            <i class="fa fa-save"></i> Save Category
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

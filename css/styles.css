@@ -1,0 +1,54 @@
+:root {
+    --primary-color: #1458ec;
+    --secondary-color: #eeeeee;
+    --hover-color: #1458ec;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--secondary-color);
+}
+.sidebar {
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+.sidebar a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+.sidebar a:hover {
+    background-color: var(--hover-color);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: black;
+}
+.sidebar .active {
+    background-color: #0f1214;
+    border-radius: 5px;
+}
+.content {
+    padding: 20px;
+}
+.sidebar-logo {
+    text-align: center;
+    padding: 20px;
+}
+.sidebar-logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.navbar-custom {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+.navbar-custom .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.card-title {
+    color: var(--primary-color);
+}
+.card {
+    border: none;
+}

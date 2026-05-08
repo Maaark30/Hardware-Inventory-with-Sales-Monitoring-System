@@ -1,0 +1,152 @@
+:root {
+  --primary-color: #1458ec;
+  --secondary-color: #eeeeee;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: 
+    linear-gradient(rgba(22,36,63,0.45), rgba(50,80,150,0.45)),
+    url('../images/pic.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  padding: 0 30px;
+}
+
+/* Left Side Info */
+.location-info {
+  text-align: center;
+  color: white;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.location-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.location-info h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.location-info p {
+  font-size: 24px;
+  margin-top: -10px;
+}
+
+/* Login Box */
+.login-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+  width: 350px;
+  color: white;
+  animation: fadeInScale 0.7s ease-in-out;
+}
+
+.login-box h2 {
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Input Fields */
+.form-control {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+  box-shadow: inset 0 0 0 2px transparent;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.form-control:focus {
+  box-shadow: inset 0 0 0 2px var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Login Button */
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+  background-color: #0e43b6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(20, 88, 236, 0.4);
+}
+
+/* Register Link */
+.register-link {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.register-link a {
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.register-link a:hover {
+  color: #ffcc00;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .login-wrapper { flex-direction: column; gap: 40px; }
+  .location-info h1 { font-size: 36px; }
+  .location-info p { font-size: 18px; }
+}
+/* Ensure all form elements line up perfectly */
+input.form-control,
+select.form-control,
+button.btn-login,
+button.btn-register {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}

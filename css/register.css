@@ -1,0 +1,57 @@
+@import url('login.css');
+
+/* Register button */
+.btn-register {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745; /* green shade */
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-register:hover {
+  background-color: #1e7e34;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+/* Make dropdown match input fields */
+select.form-control {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 14px;
+  box-shadow: inset 0 0 0 2px transparent;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+select.form-control option {
+  background: #222;
+  color: white;
+}
+
+select.form-control:focus {
+  box-shadow: inset 0 0 0 2px var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+/* Ensure all form elements line up perfectly */
+input.form-control,
+select.form-control,
+button.btn-login,
+button.btn-register {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}

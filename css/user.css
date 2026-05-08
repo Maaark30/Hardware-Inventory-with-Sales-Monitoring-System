@@ -1,0 +1,236 @@
+:root {
+  --primary-color: #1458ec;  /* Green theme for users */
+  --secondary-color: #eeeeee;
+  --hover-color: rgba(255,255,255,0.15);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding-top: 10px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/* Sidebar Titles */
+.sidebar-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 10px 15px 5px 15px;
+  margin-top: 15px;
+  letter-spacing: 1px;
+}
+
+
+.sidebar-logo {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.sidebar-logo img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-logo img:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.sidebar .nav-link {
+  color: var(--secondary-color);
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+  background-color: var(--hover-color);
+  transform: translateX(5px);
+  box-shadow: inset 3px 0px 0px rgba(255,255,255,0.7);
+}
+
+.sidebar .nav-link.active {
+  background-color: #0700d9;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: inset 3px 0px 0px #ffcc00;
+}
+
+.sidebar .nav-link i {
+  font-size: 1.2rem;
+  transition: transform 0.25s ease;
+}
+
+.sidebar .nav-link:hover i {
+  transform: scale(1.15);
+}
+
+/* Main Content Area */
+.content {
+	margin-left: 250px;
+	padding: 20px;
+	transition: margin-left 0.3s ease;
+  
+}
+.content .container-fluid {
+  max-width: 98%;
+}
+
+
+/* Card hover */
+.stat-card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.stat-card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+  .sidebar {
+    left: -250px;
+  }
+  .sidebar.show {
+    left: 0;
+  }
+  .content {
+    margin-left: 0;
+  }
+}
+/* Low stock alert enhancements */
+.table-danger th {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+.progress-bar.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.progress-bar.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.progress-bar.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.card-header.bg-gradient {
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+}
+
+/* Alert smooth hover effect */
+.alert-success {
+  background: linear-gradient(135deg, #28a745, #60d394);
+  color: #fff;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+.alert-success:hover {
+  transform: translateY(-3px);
+}
+/* Background gradient like admin dashboard */
+.bg-light-green {
+  background: linear-gradient(145deg, #e8f5e9, #dff0d8);
+  padding: 20px;
+}
+
+/* Card styling */
+.low-stock-card {
+  background: linear-gradient(135deg, #f5fff6, #e7f9ea);
+  border: none; /* remove green border */
+}
+
+/* Header gradient */
+.low-stock-card .card-header {
+  background: linear-gradient(135deg, #28a745, #218838);
+  border-bottom: none; /* remove green bottom border */
+}
+
+/* Hover for table rows inside the low-stock card: highlight entire row (no scale) */
+.low-stock-card .table-hover tbody tr:hover {
+  background-color: #f0f8f2 !important;
+}
+
+/* Make sure individual cells (like product name) don't have separate hover effects */
+.low-stock-card td:hover,
+.low-stock-card td *:hover {
+  background: transparent !important;
+}
+
+/* Progress bar colors (match theme) */
+.progress-bar.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.progress-bar.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.progress-bar.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+/* Success alert styling */
+.alert-success {
+  background: linear-gradient(135deg, #28a745, #5cd174);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+/* Red gradient for when low stock exists */
+.bg-gradient-danger {
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+}
+
+/* Gray gradient for when low stock is zero */
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, #d6d8d9, #f1f1f1);
+}
+
+/* Card hover animation */
+.stat-card {
+  transition: all 0.3s ease-in-out;
+  border-radius: 15px;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* Filter card hover to match other card styles (gentle lift + shadow) */
+.filter-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 15px;
+}
+.filter-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+
+

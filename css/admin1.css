@@ -1,0 +1,345 @@
+:root {
+    /* Blue color from the image */
+    --primary-color: #1458ec;
+    --secondary-color: #eeeeee;
+    --hover-color: rgba(255, 255, 255, 0.15);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar Container */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding-top: 10px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+    transition: left 0.3s ease-in-out;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+/* Sidebar Logo/Title Area */
+.sidebar-logo {
+    text-align: center;
+    /* Adjust padding to fit logo better, 10px is too much for vertical spacing shown in image */
+    padding: 20px 10px 10px 10px;
+}
+
+/* Horizontal line below the logo/title */
+.sidebar hr {
+    margin: 10px 15px 15px 15px;
+}
+
+.sidebar-logo img {
+    /* Assuming a placeholder/dummy image based on original code, adjust size as needed */
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-logo img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Sidebar Section Titles (MAIN, MANAGEMENT, etc.) */
+.sidebar-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px 5px 15px;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+/* Navigation Links */
+.sidebar .nav-link {
+    color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 3px 10px;
+    /* Added horizontal margin to align with image */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--hover-color);
+    transform: translateX(5px);
+    box-shadow: inset 3px 0px 0px rgba(255, 255, 255, 0.7);
+}
+
+/* Active Link Style (Dashboard in the image) */
+.sidebar .nav-link.active {
+    background-color: #0700d9;
+    /* Pure black background shown in the image */
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: inset 3px 0px 0px #ffcc00;
+    /* Yellow border shown in the image */
+}
+
+/* Logout Link Style */
+.sidebar .nav-link.text-danger {
+    color: #dc3545 !important;
+}
+
+.sidebar .nav-link.text-danger:hover {
+    background-color: rgba(220, 53, 69, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* Icon Styles */
+.sidebar .nav-link i {
+    font-size: 1.2rem;
+    transition: transform 0.25s ease;
+}
+
+.sidebar .nav-link:hover i {
+    transform: scale(1.15);
+}
+
+/* Main Content Area */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Navbar icon styling (Updated for Bootstrap Icons) */
+.navbar .bi-person-circle {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar .bi-person-circle:hover {
+    transform: scale(1.1);
+    color: #ffc107 !important;
+}
+
+/* Stat Card Hover */
+.stat-card {
+    border-left: 5px solid;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Chart Container height */
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+/* KPI Card Styles */
+.kpi-card {
+    border-radius: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.kpi-icon {
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
+/* Chart Card */
+.chart-card {
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+.chart-card h6 {
+    color: #333;
+}
+
+/* Chart.js Canvas Container */
+.chart-container canvas {
+    border-radius: 10px;
+}
+
+/* Chart Title Section */
+.chart-card h6 i {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.chart-card h6 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+}
+
+/* Smooth Chart Hover Effect */
+.chart-card canvas {
+    transition: transform 0.2s ease;
+}
+
+.chart-card:hover canvas {
+    transform: scale(1.02);
+}
+
+/* Add these styles to your admin1.css */
+
+/* Main layout containers */
+.d-flex {
+    display: flex;
+}
+
+.content {
+    margin-left: 250px;
+    /* Must match sidebar width */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Reports Specific Styles (Filter Card) */
+.filter-card {
+    background: #e9ecef;
+    /* Light gray background */
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+/* Styles copied from the dashboard for chart containers */
+.chart-card {
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Stronger shadow for charts */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.chart-card h6 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    /* Dark text for titles */
+}
+
+/* Ensure icons within H6 are aligned */
+.chart-card h6 i {
+    font-size: 1.25rem;
+    vertical-align: middle;
+}
+
+/* This makes the charts full size within the fixed height container */
+[style*="height:350px;"]>canvas {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 991px) {
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+}
+
+
+/* ===== Dashboard Header ===== */
+.dashboard-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Filter & Product Cards ===== */
+.filter-card,
+.product-card {
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.filter-card:hover,
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-card h4 i {
+    font-size: 1.4rem;
+    vertical-align: middle;
+}
+
+/* ===== Buttons ===== */
+.btn-outline-primary {
+    border: 2px solid #1458ec;
+    color: #1458ec;
+}
+
+.btn-outline-primary:hover {
+    background: #1458ec;
+    color: #fff;
+}
+
+.btn-primary {
+    background: #1458ec;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #0f47c9;
+}
+
+/* ===== Table Styling ===== */
+.table thead {
+    background-color: #1458ec !important;
+    color: #fff !important;
+    border-radius: 10px 10px 0 0;
+}
+
+.table tbody tr:hover {
+    background-color: #f2f6ff;
+    transition: background 0.2s ease;
+}
